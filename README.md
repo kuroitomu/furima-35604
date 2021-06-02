@@ -27,13 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-|     Column            |    Type    |    Options                 |
-| --------------------  |  --------  |  ------------------------  |
-| nickname              |   string   | null: false                |
-| email                 |   string   | null: false, unique: true  |
-| family_name_kana      |   string   | null: false                |
-| first_name_kana       |   string   | null: false                |
-| birthday              |   date     | null: false                |
+|     Column             |    Type    |    Options                 |
+| ---------------------  |  --------  |  ------------------------  |
+| nickname               |   string   | null: false                |
+| email                  |   string   | null: false, unique: true  |
+| password               |   string   | null: false                |
+| family_name_full_width |   string   | null: false                |
+| first_name_full_width  |   string   | null: false                |
+| family_name_kana       |   string   | null: false                |
+| first_name_kana        |   string   | null: false                |
+| birthday               |   date     | null: false                |
 
 ここに追記していく）
 
@@ -51,7 +54,7 @@ Things you may want to cover:
 | category_id            |  integer     | null: false                      |
 | product_status_id      |  integer     | null: false                      |
 | shipping_charges_id    |  integer     | null: false                      |
-| shipping_area_id       |  integer     | null: false                      |
+| prefectures            |  integer     | null: false                      |
 | shipping_time_id       |  integer     | null: false                      |
 | price                  |  integer     | null: false                      |
 | user                   |  references  | null: false, foreign_key: true   |
@@ -89,6 +92,7 @@ Things you may want to cover:
 
 ### Association
   belongs_to :item
+  has_many   :purchases
 
 
 
