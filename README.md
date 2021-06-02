@@ -62,6 +62,7 @@ Things you may want to cover:
 ### Association
   belongs_to :user
   has_one    :purchase
+  has_one    :address
   
 
 
@@ -75,7 +76,7 @@ Things you may want to cover:
 ### Association
   belongs_to :user
   belongs_to :purchase
-  has_one    :address
+  
 
 
 ### address テーブル
@@ -91,7 +92,6 @@ Things you may want to cover:
 | items                  |  references  | null: false, foreign_key: true   |
 
 ### Association
-  belongs_to :item
   has_many   :purchases
 
 

@@ -1,6 +1,6 @@
 <mxfile>
     <diagram id="ej_C0HIalOVUg0DUUh1K" name="ページ1">
-        <mxGraphModel dx="521" dy="529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="799" dy="639" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -19,7 +19,7 @@
                 <mxCell id="49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="41" source="43" target="43">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="44" value="encrypted_password&#10;&#10;faimily_name&#10;&#10;first_name&#10;&#10;middle_name&#10;&#10;family_name_kana&#10;&#10;first_name_kana&#10;&#10;birthday&#10;&#10;&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="41">
+                <mxCell id="44" value="password&#10;&#10;faimily_name_full_width&#10;&#10;first_name_full_width&#10;&#10;family_name_kana&#10;&#10;first_name_kana&#10;&#10;birthday&#10;&#10;&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="41">
                     <mxGeometry y="86" width="160" height="194" as="geometry"/>
                 </mxCell>
                 <mxCell id="50" value="items " style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
@@ -31,7 +31,7 @@
                 <mxCell id="52" value="product_explanation" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="50">
                     <mxGeometry y="52" width="160" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="53" value="category_id&#10;&#10;product_status_id&#10;&#10;shipping_charges_id&#10;&#10;shipping_area_id&#10;&#10;shipping_time&#10;&#10;price&#10;&#10;user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="50">
+                <mxCell id="53" value="category_id&#10;&#10;product_status_id&#10;&#10;shipping_charges_id&#10;&#10;prefectures&#10;&#10;shipping_time_id&#10;&#10;price&#10;&#10;user" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" vertex="1" parent="50">
                     <mxGeometry y="82" width="160" height="194" as="geometry"/>
                 </mxCell>
                 <mxCell id="54" value="purchase" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" vertex="1" parent="1">
