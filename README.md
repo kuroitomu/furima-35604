@@ -52,7 +52,7 @@ Things you may want to cover:
 | product_status_id      |  integer     | null: false                      |
 | shipping_charges_id    |  integer     | null: false                      |
 | shipping_area_id       |  integer     | null: false                      |
-| shipping_time_id          |  integer     | null: false                      |
+| shipping_time_id       |  integer     | null: false                      |
 | price                  |  integer     | null: false                      |
 | user                   |  references  | null: false, foreign_key: true   |
 
