@@ -62,7 +62,7 @@ Things you may want to cover:
 ### Association
   belongs_to :user
   has_one    :purchase
-  has_one    :address
+  
   
 
 
@@ -76,6 +76,7 @@ Things you may want to cover:
 ### Association
   belongs_to :user
   belongs_to :item
+  has_one    :address
   
 
 
@@ -89,7 +90,7 @@ Things you may want to cover:
 | house_number           |  string      | null: false                      |
 | building_name          |  string      |                                  |
 | phone_number           |  string      | null: false                      |
-| items                  |  reference  | null: false, foreign_key: true   |
+| purchase               |  reference  | null: false, foreign_key: true   |
 
 ### Association
  belongs_to :purchase
