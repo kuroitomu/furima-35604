@@ -4,12 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :items
-  has_many :purchase
+  #has_many :purchase
 
   with_options presence: true do
       validates :nickname
 
-  with_options format: {with: /\A[ぁ-んァ-ン一-龥]/} do
+  with_options format: {with: /\A[ぁ-んァ-ン一-龥]\z/} do
       validates :family_name_full_width
       validates :first_name_full_width
     end

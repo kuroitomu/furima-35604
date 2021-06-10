@@ -39,23 +39,61 @@ describe User, type: :model do
       expect(@user.errors.full_messages).to include("Email is invalid")
      end
 
+     it "重複したemailが存在する場合登録できない" do
+      @user.save
+      another_user = FactoryBot.build(:user)
+      another_user.email = @user.email
+      another_user.valid? 
+      expect(another_user.errors.full_messages).to include("Email has already been taken")
+     end
+
      it 'passwordが空では登録できない' do
       @user.password = ""
       @user.valid?
       expect(@user.errors.full_messages).to include("Password can't be blank")
      end
 
-     it "passwordが5文字以下であれば登録できない" do
-      @user.password = "00000"
+     it "passwordが6文字以下であれば登録できない" do
+      @user.password = "000000"
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
      end
+
+     it "passwordが半角英数字混合でなければ登録できない" do
+      @user.password = "aaaaaa"
+      @user.valid?
+      expect(@user.errors_full_messages).to include("Password Include both letters and numbers")
+      end
 
      it 'passwordが存在してもpassword_confirmationが空では登録できない' do
       @user.password = "000000"
       @user.password_confirmation = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+     end
+
+     it "family_name_full_widthは全角(漢字・ひらがな・カタカナ）でなければ登録できない" do
+      @user.family_name_full_width = "kana"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("")
+     end
+
+     it "first_name_full_widthは全角（漢字・ひらがな・カタカナ）でなければ登録できない" do
+      @user.first_name_full_width = "kana"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("")
+     end
+    
+     it "family_name_kanaは全角（カタカナ）でなければ登録できない" do
+      @user.family_name_kana = "かな"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("")
+     end
+
+     it "first_name_kanaは全角（カタカナ）でなければ登録できない" do
+      @user.first_name_kana = "かな"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("")
      end
 
      it "family_name_full_widthが空では登録できない" do
@@ -82,11 +120,16 @@ describe User, type: :model do
       expect(@user.errors.full_messages).to include("First name kana can't be blank", "First name kana is invalid")
      end
 
-     it "family_name_kanaとfirst_name_kanaがカタカナでないと登録できない" do
+     it "family_name_kanaがひらがな・カタカナ・漢字以外の場合は登録できない" do
        @user.family_name_kana = "yamada"
-       @user.first_name_kana = "tarou"
        @user.valid?
-       expect(@user.errors.full_messages).to include("Family name kana is invalid", "First name kana is invalid")
+       expect(@user.errors.full_messages).to include("Family name kana is invalid")
+     end
+
+     it "first_name_kanaがひらがな・カタカナ・漢字以外の場合は登録できない" do
+      @user.first_name_kana = "tarou"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("First name kana is invalid")
      end
 
       it "birthdayが空では登録できない" do
