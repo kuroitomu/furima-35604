@@ -9,7 +9,7 @@ class User < ApplicationRecord
   with_options presence: true do
       validates :nickname
       validates :email
-      validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, messages: "Password Include both letters and numbers"}
+      validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: "Password Include both letters and numbers"}
 
   with_options format: {with: /\A[ぁ-んァ-ン一-龥]+\z/} do
       validates :family_name_full_width
