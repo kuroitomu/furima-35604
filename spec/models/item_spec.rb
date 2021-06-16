@@ -15,7 +15,7 @@ describe Item do
   describe '商品の出品' do
     context '商品の出品ができるとき' do
       it 'priceは半角数字のみ保存可能であること' do
-        @item.price = '301'
+        @item.price = 300
         expect(@item).to be_valid
       end
     end
@@ -120,9 +120,21 @@ describe Item do
       end
 
       it 'priceが全角数字だと保存できない' do
-        @item.price = '５０００'
+        @item.price = '３００'
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      
+      it 'priceは半角英数混合では登録できないこと' do
+        @item.price = "300yen"
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Price Include both letters and numbers")
+      end
+
+      it 'priceは半角英語だけでは登録できないこと' do
+        @item.price = 'three handlet'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price Price Include both letters and numbers")
       end
     end
   end

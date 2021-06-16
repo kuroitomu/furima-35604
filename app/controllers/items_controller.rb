@@ -12,10 +12,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.valid?
-       @item.save
-       render json: {item: item} 
+    @item = Item.new(item_params) 
+    if @item.save
        redirect_to root_path
     else
        render :new
@@ -55,4 +53,8 @@ class ItemsController < ApplicationController
   # def prohibit_access
   #   redirect_to action: :show if @item.user_id != current_user.id
   # end
+  
+  def move_to_index
+    redirect_to action: :index if (@item.user_id != current_user.id|| @item.purchase.present?)
+  end
 end
