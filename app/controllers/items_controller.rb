@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # before_action :prohibit_access, only: [:edit, :update, :destroy]
 
   def index
-    #  @items = Item.order("created_at DESC")
+      @items = Item.order("created_at DESC")
   end
 
   def new
