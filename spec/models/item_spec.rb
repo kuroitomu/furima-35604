@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
     context '商品出品ができる時' do
       it '全ての項目の入力が存在すれば商品出品ができる' do
         expect(@item).to be_valid
-    end
+      end
 
     it 'priceが半角数字なら出品できる' do
       @item.price = 300
