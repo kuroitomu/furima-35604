@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :item do
-    name                  { Faker::Name.name }
+    image                { Faker::Lorem.sentence }
+    name                 { Faker::Name.name }
     product_explanation  { Faker::Lorem.sentence }
     category_id           {2}
     product_status_id     {3}
@@ -9,8 +10,9 @@ FactoryBot.define do
     shipping_time_id      {3} 
     price                 {300}
     association :user
+   
     after(:build) do |item|
-      item.image.attach(io: File.open('public/images/item_image.png'), filename: 'item_image.png')
+      item.image.attach(io: File.open('public/images/image.png'), filename: 'image.png')
     end
   end
 end

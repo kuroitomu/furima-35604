@@ -7,9 +7,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefectures
   belongs_to_active_hash :shipping_time
 
-  # belongs_to       :user
-  # has_one          :purchase
-  # has_one_attached :image
+   belongs_to       :user
+   has_one          :purchase
+   has_one_attached :image
 
 with_options presence: true do
   validates :image
@@ -18,7 +18,7 @@ with_options presence: true do
   validates :price, format: { with: /\A[0-9]+\z/ }
   validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
 
-with_options numericality: { other_than: 0 } do
+with_options numericality: { other_than: 1 } do
   validates :category_id
   validates :product_status_id
   validates :shipping_charges_id
