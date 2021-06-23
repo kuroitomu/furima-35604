@@ -8,15 +8,15 @@ class ItemsController < ApplicationController
   end
 
   def new
-     @item = Item.new
+      @item = Item.new
   end
 
   def create
-     @item = Item.new(item_params) 
-    if @item.save
-       redirect_to root_path
-    else
-       render :new
+      @item = Item.new(item_params) 
+   if @item.save
+      redirect_to root_path
+   else
+      render :new
     end
   end
 
@@ -29,15 +29,15 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+   if @item.update(item_params)
       redirect_to item_path
-    else
-       render :edit
+   else
+      render :edit
     end
   end
 
   def destroy
-    if @item.destroy
+      @item.destroy
       redirect_to root_path
     end
   end
@@ -45,16 +45,16 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :product_explanation, :category_id, :product_status_id, :shipping_charges_id, :prefectures_id, :shipping_time_id, :price, :image).merge(user_id: current_user.id)
+      params.require(:item).permit(:name, :product_explanation, :category_id, :product_status_id, :shipping_charges_id, :prefectures_id, :shipping_time_id, :price, :image).merge(user_id: current_user.id)
   end
 
   def set_item
-     @item = Item.find(params[:id])
+      @item = Item.find(params[:id])
   end
 
   def set_user
     unless @item.user_id == current_user.id
-        redirect_to root_path
+           redirect_to root_path
     end
   end
   
