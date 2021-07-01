@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   end
 
   def edit 
-
+      redirect_to action: :index unless current_user.id == @item.user.id && @item.order != nil
   end
 
   def update
@@ -39,13 +39,12 @@ class ItemsController < ApplicationController
   def destroy
       @item.destroy
       redirect_to root_path
-    
   end
 
   private
 
   def item_params
-      params.require(:item).permit(:name, :product_explanation, :category_id, :product_status_id, :shipping_charges_id, :prefectures_id, :shipping_time_id, :price, :image).merge(user_id: current_user.id)
+      params.require(:item).permit(:name, :product_explanation, :category_id, :product_status_id, :shipping_charges_id, :prefecture_id, :shipping_time_id, :price, :image).merge(user_id: current_user.id)
   end
 
   def set_item
@@ -57,8 +56,5 @@ class ItemsController < ApplicationController
            redirect_to root_path
     end
   end
-  
-  def move_to_index
-    #  redirect_to action: :index if (@item.user_id != current_user.id|| @item.purchase.present?)
-  end
 end
+  

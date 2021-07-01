@@ -8,9 +8,9 @@
     </h2>
     <div class="item-img-content">
        <%= image_tag @item.image ,class:"item-box-img" %> 
-     <%# <% if @item.purchase != nil %>
+       <% if @item.order != nil %>
       <%# 商品が売れている場合は、sold outを表示 %>
-      <%# <div class="sold-out">
+       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
     <% end %> 
@@ -64,7 +64,7 @@
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.prefectures.name %></td>
+          <td class="detail-value"><%= @item.prefecture.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
