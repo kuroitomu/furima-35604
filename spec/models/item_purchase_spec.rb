@@ -11,7 +11,7 @@ RSpec.describe ItemPurchase, type: :model do
         end
 
         it 'buildingは空でも保存できること' do
-          @item_purchase.building = ''
+          @item_purchase.building_name = ''
           expect(@item_purchase).to be_valid
         end
       end
@@ -27,11 +27,11 @@ RSpec.describe ItemPurchase, type: :model do
         it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
           @item_purchase.postal_code = '1234567'
           @item_purchase.valid?
-          expect(@item_purchase.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+          expect(@item_purchase.errors.full_messages).to include("Postal code is invalid")
         end
 
         it 'prefectureを選択していないと保存できないこと' do
-          @item_purchase.prefecture_id = 0
+          @item_purchase.prefecture_id = nil
           @item_purchase.valid?
           expect(@item_purchase.errors.full_messages).to include("Prefecture can't be blank")
         end
@@ -42,22 +42,22 @@ RSpec.describe ItemPurchase, type: :model do
           expect(@item_purchase.errors.full_messages).to include("City can't be blank")
         end
 
-        it 'phonenoが空だと保存できないこと' do
-          @item_purchase.phoneno =''
+        it 'phone_numberが空だと保存できないこと' do
+          @item_purchase.phone_number =""
           @item_purchase.valid?
-          expect(@item_purchase.errors.full_messages).to include("Phoneno can't be blank")
+          expect(@item_purchase.errors.full_messages).to include("Phone number can't be blank", "Phone number is invalid")
         end
 
-        it 'phonenoがハイフンあると保存できないこと' do
-          @item_purchase.phoneno ='080-2222-12'
+        it 'phone_numberがハイフンあると保存できないこと' do
+          @item_purchase.phone_number ='080-2222-222'
           @item_purchase.valid?
-          expect(@item_purchase.errors.full_messages).to include("Phoneno is invalid")
+          expect(@item_purchase.errors.full_messages).to include("Phone number is invalid")
         end
 
-        it 'phonenoが11桁以上あると保存できないこと' do
-          @item_purchase.phoneno ='080123423232'
+        it 'phone_numberが11桁以上あると保存できないこと' do
+          @item_purchase.phone_number ='080222222222'
           @item_purchase.valid?
-          expect(@item_purchase.errors.full_messages).to include("Phoneno is invalid")
+          expect(@item_purchase.errors.full_messages).to include("Phone number is invalid")
         end
 
         it "tokenが空では登録できないこと" do
