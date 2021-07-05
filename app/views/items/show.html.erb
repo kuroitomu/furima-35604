@@ -8,9 +8,9 @@
     </h2>
     <div class="item-img-content">
        <%= image_tag @item.image ,class:"item-box-img" %> 
-     <%# <% if @item.purchase != nil %>
+       <% if @item.order != nil %>
       <%# 商品が売れている場合は、sold outを表示 %>
-      <%# <div class="sold-out">
+       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
     <% end %> 
@@ -19,27 +19,22 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-         ¥<%=  @item.price %>
+         ¥<%= @item.price %>
       </span>
       <span class="item-postage">
          <%= @item.shipping_charges.name %>
       </span>
     </div>
 
-    
-     <% if user_signed_in? %>
-     <% if current_user.id == @item.user_id %>
-     <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-     <p class="or-text">or</p>
-     <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
-     <% elsif %>
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
-     <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
-     <% end %>
+     <% if user_signed_in? && @item.order == nil %>
+      <% if current_user == @item.user %>
+      <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+      <p class="or-text">or</p>
+      <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
+      <% else %>
+      <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
+      <% end %>
     <% end %>
-
-    
 
     <div class="item-explain-box">
     <span><%= @item.product_explanation  %></span>
@@ -64,7 +59,7 @@
         </tr>
         <tr>
           <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.prefectures.name %></td>
+          <td class="detail-value"><%= @item.prefecture.name %></td>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>
