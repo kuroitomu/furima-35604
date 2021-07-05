@@ -61,7 +61,7 @@ RSpec.describe ItemPurchase, type: :model do
         it 'phone_numberが空だと保存できないこと' do
           @item_purchase.phone_number =""
           @item_purchase.valid?
-          expect(@item_purchase.errors.full_messages).to include("Phone number can't be blank", "Phone number is invalid")
+          expect(@item_purchase.errors.full_messages).to include("Phone number can't be blank")
         end
 
         it 'phone_numberがハイフンあると保存できないこと' do
