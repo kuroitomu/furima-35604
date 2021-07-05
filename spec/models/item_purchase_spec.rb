@@ -1,8 +1,12 @@
 require 'rails_helper'
 RSpec.describe ItemPurchase, type: :model do
     before do
-      @item_purchase = FactoryBot.build(:item_purchase)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @item_purchase = FactoryBot.build(:item_purchase, user_id: @user.id, item_id: @item.id)
+      sleep 0.1
     end
+  
 
     describe '商品購入機能' do
      context '登録がうまくいくとき' do
@@ -36,10 +40,22 @@ RSpec.describe ItemPurchase, type: :model do
           expect(@item_purchase.errors.full_messages).to include("Prefecture can't be blank")
         end
 
+        it 'prefectureが--だと保存できない' do
+          @item_purchase.prefecture_id = 1
+          @item_purchase.valid?
+          expect(@item_purchase.errors.full_messages).to include("Prefecture is invalid. Include")
+        end
+
         it 'cityが空だと保存できないこと' do
           @item_purchase.city =''
           @item_purchase.valid?
           expect(@item_purchase.errors.full_messages).to include("City can't be blank")
+        end
+
+        it 'house_numberが空だと登録できない' do
+          @item_purchase.house_number =""
+          @item_purchase.valid?
+          expect(@item_purchase.errors.full_messages).to include("House number can't be blank")
         end
 
         it 'phone_numberが空だと保存できないこと' do
@@ -54,8 +70,14 @@ RSpec.describe ItemPurchase, type: :model do
           expect(@item_purchase.errors.full_messages).to include("Phone number is invalid")
         end
 
-        it 'phone_numberが11桁以上あると保存できないこと' do
+        it 'phone_numberが12桁以上あると保存できないこと' do
           @item_purchase.phone_number ='080222222222'
+          @item_purchase.valid?
+          expect(@item_purchase.errors.full_messages).to include("Phone number is invalid")
+        end
+
+        it 'phone_numberが英数混合では登録できないこと' do
+          @item_purchase.phone_number = "080222222222number"
           @item_purchase.valid?
           expect(@item_purchase.errors.full_messages).to include("Phone number is invalid")
         end
