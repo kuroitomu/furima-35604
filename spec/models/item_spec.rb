@@ -35,10 +35,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping charges can't be blank", "Shipping charges is not a number")
       end
 
-      it 'prefecturesが空だと保存できない' do
+      it 'prefectureが空だと保存できない' do
         @item.prefectures_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefectures can't be blank", "Prefectures is not a number")
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank", "Prefectures is not a number")
       end
 
       it 'shipping_timeが空だと保存できない' do
@@ -89,10 +89,10 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Shipping charges must be other than 1")
       end
 
-      it 'prefecturesが--だと保存できない' do
+      it 'prefectureが--だと保存できない' do
         @item.prefectures_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefectures must be other than 1")
+        expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
 
       it 'shipping_timeが--だと保存できない' do
