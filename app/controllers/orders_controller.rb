@@ -35,9 +35,9 @@ class OrdersController < ApplicationController
       card: item_purchase_params[:token],
       currency: 'jpy'
     )
-    
+  end
+
     def set_user
       redirect_to root_path if current_user.id == @item.user_id || @item.order != nil
     end
   end
-end
