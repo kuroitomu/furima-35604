@@ -60,9 +60,12 @@ group :development do
   gem 'rubocop', require: false
 end
 
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
 gem 'active_hash'
 gem 'devise'
-
 gem'pry-rails'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
